@@ -16,6 +16,5 @@ class Connector
   end
 
   #TODO it also should use Character buidler here
-  # Than should return the repsosne of is_human to is_human.rb
 end
 

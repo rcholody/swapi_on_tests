@@ -7,30 +7,30 @@ class String
 end
 
 class StdinHandler
-#TODO add for those here some tests for those new amazing features
-# data = []
+#TODO add for those here some tests for those new features
 #   begin
-    #TODO add here check if is_integer?
-    input = ARGV[0]
+  input = ARGV[0]
+  unless input.nil?
     if input.is_integer?
       input = input.to_i
     end
+  end
 
-    case input
-    when nil
-      p "It's a trap!"
-    when String
-      #TODO here it should got to connector, than to SWAPI API
+  case input
+  when nil
+    p "It's a trap!"
+  when input.empty?
+    p "Please enter name."
+  when String
+    p input
+    Connector.new(input)
+  when Integer
+    print('It is an Integer, you should give me a String as an argument')
+  else
+    print('It is not a string, you should give me a String as an argument')
+  end
 
-      # TODO if there lack of internet connection it should also raise sth
-      p input
-      Connector.new(input)
-    when Integer
-      print('It is an Integer, you should give me a String as an argument')
-    else
-      print('It is not a string, you should give me a String as an argument')
-    end
-  # rescue
-  #   raise "Stdin error, non argument in input"
-  # end
+# rescue
+#   raise "Stdin error, non argument in input"
+# end
 end

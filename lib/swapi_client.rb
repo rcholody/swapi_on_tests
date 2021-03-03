@@ -5,8 +5,7 @@ require 'httparty'
 class SwapiClient
   #TODO here hadnle bad Padmé request
   #TODO here hadnle bad Joda request
-  # Handle lack od request or sth
-  #
+
   def search(name)
     begin
       response = HTTParty.get("https://swapi.dev/api/people/?search=#{name}")

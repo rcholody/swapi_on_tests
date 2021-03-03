@@ -15,12 +15,4 @@ class Character
       true
     end
   end
-  #
-  # def prepare_species(json_params)
-  #   data = JSON.parse(json_params.body)
-  #   results = data["results"]
-  #   results = results[0]
-  #   results["species"]
-  # end
-
 end
