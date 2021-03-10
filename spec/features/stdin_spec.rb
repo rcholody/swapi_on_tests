@@ -1,4 +1,4 @@
-require "spec/spec_helper"
+require_relative '../../spec/spec_helper'
 
 describe "standard input" do
   it "should receive 'Luke'" do

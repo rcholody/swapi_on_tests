@@ -12,8 +12,8 @@ RSpec.configure do |config|
         :status => 'success',
         :data => [{
                       "count": 1,
-                      "next": null,
-                      "previous": null,
+                      "next": nil,
+                      "previous": nil,
                       "results": [
                           {
                               "name": "Luke Skywalker",

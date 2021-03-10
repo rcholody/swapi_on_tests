@@ -1,3 +1,6 @@
+require_relative '../../lib/connector'
+
+
 describe Connector do
   describe "connector" do
     it "can connect to external API with search method" do

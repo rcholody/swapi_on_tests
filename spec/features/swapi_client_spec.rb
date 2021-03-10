@@ -1,6 +1,33 @@
-# require_relative './../example'
+require_relative '../../spec/spec_helper'
+require_relative '../../lib/swapi_client'
+
 
 describe SwapiClient do
+  subject(:api) { described_class.new(name) }
+
+  let(:name) { 'luke' }
+
+  describe '#search' do
+    let(:swapi_url) { "https://swapi.dev/api/people/?search=#{name}" }
+    let(:swapi_response) { instance_double(HTTParty::Response, body: swapi_response_body) }
+    let(:swapi_response_body) { 'response_body' }
+
+    before do
+      allow(HTTParty).to receive(:get).and_return(swapi_response)
+      allow(JSON).to receive(:parse)
+
+      api.search
+    end
+
+    it 'search from SWAPI api' do
+      expect(HTTParty).to have_received(:get).with(swapi_url)
+    end
+
+    it 'parses the SWAPI response' do
+      expect(JSON).to have_received(:parse).with(swapi_response_body)
+    end
+  end
+
   describe 'SomeClient#request' do
     # before {allow(client).to receive(:some_lib).with(no_args).and_return(some_lib)}
     before {allow(client).to receive(:swapi_response).with(no_args).and_return(swapi_resposne)}

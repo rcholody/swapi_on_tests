@@ -1,17 +1,17 @@
-require '../lib/swapi_client'
-require '../lib/character'
+require_relative '../lib/swapi_client'
+require_relative '../lib/character'
 
 
 class Connector
   def initialize(name)
-    swapi_client = SwapiClient.new
+    swapi_client = SwapiClient.new(name)
 
-    data_for_character = swapi_client.search(name)
+    data_for_character = swapi_client.search
     unless data_for_character.nil?
       data_for_character #TODO move it connector
-      character = Character.new #TODO handle this in better way
+      character = Character.new(data_for_character) #TODO handle this in better way
       #TODO here probably I need builder in action
-      character.is_human?(data_for_character)
+      character.is_human?
     end
   end
 

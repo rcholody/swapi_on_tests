@@ -1,12 +1,17 @@
 #TODO HEre should I have some imports for JSON parers, API connection etc
 require 'httparty'
 
-#
-class SwapiClient
-  #TODO here hadnle bad Padmé request
-  #TODO here hadnle bad Joda request
 
-  def search(name)
+class SwapiClient
+
+  #TODO Here handle bad Dooku request
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def search
     begin
       response = HTTParty.get("https://swapi.dev/api/people/?search=#{name}")
     rescue HTTParty::Error, SocketError => e
