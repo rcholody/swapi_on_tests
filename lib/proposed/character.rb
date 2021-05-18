@@ -6,4 +6,8 @@ class Character
     @name = name
     @species = species
   end
+
+  def is_human?
+    species.empty?
+  end
 end
