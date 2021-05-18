@@ -1,8 +1,9 @@
 class CharacterFactory
   def self.build(data)
-    Character.new(
+    character = Character.new(
       name: data['name'],
       species: data['species']
     )
+    return character unless CharacterValidator.new(character).validate!
   end
 end
