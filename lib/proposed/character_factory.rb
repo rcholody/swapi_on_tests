@@ -4,6 +4,6 @@ class CharacterFactory
       name: data['name'],
       species: data['species']
     )
-    return character unless CharacterValidator.new(character).validate!
+    return character if CharacterValidator.new(character).validate!
   end
 end
