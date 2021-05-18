@@ -64,4 +64,49 @@ describe Swapi do
     end
   end
 
+  describe Swapi::ErrorHandler do
+    subject(:handler) { described_class }
+    let(:response) { OpenStruct.new(code: :xxx) }
+    let(:generic_error_message) { 'xxx - Generic error'}
+
+    before do
+      allow(Logger).to receive(:error).with(generic_error_message)
+    end
+
+    it 'logs error message' do
+      handler.call(response)
+      expect(Logger).to have_received(:error).with(generic_error_message).once
+    end
+
+    context 'when handling 404' do
+      let(:response) { OpenStruct.new(code: 404) }
+      let(:error_message) { "#{response.code} - Page not found! Maybe bad internet?" }
+
+      before do
+        allow(Logger).to receive(:error).with(error_message)
+      end
+
+      it 'logs error message' do
+        handler.call(response)
+        expect(Logger).to have_received(:error).with(error_message).once
+      end
+    end
+
+    context 'when handling 500' do
+      let(:response) { OpenStruct.new(code: 500) }
+      let(:error_message) { "#{response.code} - Something went wrong." }
+
+      before do
+        allow(Logger).to receive(:error).with(error_message)
+      end
+
+      it 'logs error message' do
+        handler.call(response)
+        expect(Logger).to have_received(:error).with(error_message).once
+      end
+    end
+
+
+  end
+
 end

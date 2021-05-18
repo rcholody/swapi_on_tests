@@ -8,8 +8,9 @@ class Swapi
 
   class ErrorHandler
     ERROR_MESSAGES = {
+      xxx: 'Generic error',
       404 => 'Page not found! Maybe bad internet?',
-      500...600 => 'Something went wrong.'
+      500 => 'Something went wrong.'
     }
 
     def self.call(response)
