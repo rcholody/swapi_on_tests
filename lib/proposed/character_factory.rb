@@ -1,3 +1,6 @@
+require_relative './character'
+require_relative './character_validator'
+
 class CharacterFactory
   def self.build(data)
     character = Character.new(
