@@ -2,8 +2,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'webmock/rspec'
-
-WebMock.disable_net_connect!(allow_localhost: true)
+Gem.find_files("swapi_on_tests/lib/**/*.rb").each { |path| require path }
 
 
 RSpec.configure do |config|
