@@ -1,3 +1,4 @@
+require_relative 'support/response_helper'
 require 'simplecov'
 SimpleCov.start
 
@@ -65,4 +66,5 @@ module Helpers
 end
 RSpec.configure do |conf|
   conf.include(Helpers)
+  conf.include ResponseHelper
 end
